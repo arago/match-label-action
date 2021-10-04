@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/zwaldowski/match-label-action.git"
+    "url": "git+https://github.com/arago/match-label-action.git"
   },
   "keywords": [
     "GitHub",
@@ -20,9 +20,9 @@
   "author": "GitHub",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/zwaldowski/match-label-action/issues"
+    "url": "https://github.com/arago/match-label-action/issues"
   },
-  "homepage": "https://github.com/zwaldowski/match-label-action#readme",
+  "homepage": "https://github.com/arago/match-label-action#readme",
   "dependencies": {
     "@actions/core": "^1.4.0",
     "@actions/github": "^2.1.1"

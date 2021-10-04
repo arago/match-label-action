@@ -4,10 +4,12 @@ const match = require('./match.js')
 
 function run() {
   try {
+    const prefix = core.getInput('prefix')
+    const prx = new RegExp(`^${prefix}`, 'g')
     const pr = context.payload.pull_request || {}
     const labels = pr.labels || []
     const labelNames = labels.map((label) => label.name)
-    const allowedLabels = match.parseAllowed(core.getInput('allowed'))
+    const allowedLabels = match.parseAllowed(core.getInput('allowed'), prefix)
     const allowedMultipleLabels = match.parseAllowed(
       core.getInput('allowed_multiple')
     )
@@ -26,7 +28,9 @@ function run() {
       )
     }
 
-    core.setOutput('match', matchingLabel.join(', '))
+    const matches = matchingLabel.map((l) => (prefix ? l.replace(prx, '') : l))
+
+    core.setOutput('match', matches.join(', '))
   } catch (error) {
     core.setFailed(error.message)
   }

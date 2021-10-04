@@ -1,9 +1,10 @@
-function parseAllowed(allowed) {
+function parseAllowed(allowed, prefix) {
   return allowed.split(/\r?\n/).flatMap((line) =>
     line
       .split(/,\s*/)
       .map((label) => label.trim())
       .filter((label) => label)
+      .map((label) => (prefix ? `${prefix}${label}` : label))
   )
 }
 
@@ -12,6 +13,7 @@ function findMatching(labelNames, allowedLabels, isMultipleAllowed) {
   const matchingLabels = labelNames.filter((labelName) =>
     allowedLabelsSet.has(labelName)
   )
+
   if (
     isMultipleAllowed
       ? matchingLabels.length === 0
