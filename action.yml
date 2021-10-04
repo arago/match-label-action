@@ -1,5 +1,5 @@
-name: 'Match PR Label'
-description: 'Requires a PR to exactly one of the labels from a list'
+name: "Match PR Label"
+description: "Requires a PR to exactly one of the labels from a list"
 inputs:
   allowed:
     description: >
@@ -13,12 +13,18 @@ inputs:
 
       Mutually exclusive with `allowed`.
     required: false
+  prefix:
+    description: >
+      Prefix can be used for monorepo support. 
+
+      Output will return the non-prefixed tag for use in other actions.
+    required: false
 outputs:
   match:
-    description: 'The matched label, if found. Comma-separated if multiple.'
+    description: "The matched label, if found. Comma-separated if multiple."
 runs:
-  using: 'node12'
-  main: 'dist/index.js'
+  using: "node12"
+  main: "dist/index.js"
 branding:
-  icon: 'hash'
-  color: 'orange'
+  icon: "hash"
+  color: "orange"
